@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+   // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -54,6 +54,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
+
+
         $message = [
             'name.required' => 'نام را پر کنید',
             'name.max' => 'طول رشته نام زیاد شده است!',
@@ -68,7 +70,7 @@ class RegisterController extends Controller
             'password.required' => 'رمز عبور را پر کنید',
             'password.min' => 'تعداد کاراکتر رمز عبور حداقل 8 رقم می باشد',
             'password.confirmed' => 'مطابقت رمز عبور با مشکل مواجه شده است لطفا مجددا سعی نمائید',
-            'city.required' => 'شهر را پر کنید',
+
 
         ];
 
@@ -78,7 +80,7 @@ class RegisterController extends Controller
             'mobile' => ['required', 'string', 'max:11', 'min:11', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'city' => ['required', 'string', 'max:255'],
+
 
         ],$message);
     }
@@ -93,12 +95,12 @@ class RegisterController extends Controller
     {
 
 
+
         return User::create([
             'name' => $data['name'],
             'family' => $data['family'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
-            'city' => $data['city'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -110,6 +112,6 @@ class RegisterController extends Controller
         $webtitle='ثبت نام';
         $city = Province::all()->pluck('id','name'); // returns collection of cities
 
-        return view('front/auth/register',compact('webtitle','city'));
+        return view('auth/register',compact('webtitle','city'));
     }
 }

@@ -51,37 +51,51 @@
 <div class="sidenav-black-overlay"></div>
 <!-- Side Nav Wrapper-->
 <div class="suha-sidenav-wrapper" id="sidenavWrapper">
-    <!-- Sidenav Profile-->
-    <div class="sidenav-profile">
-        <div class="user-profile"><img src="{{url('front/img/bg-img/9.jpg')}}" alt=""></div>
-        <div class="user-info">
-            <h6 class="user-name mb-0">نیلوفر</h6>
-            <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
-        </div>
-    </div>
-    <!-- Sidenav Nav-->
-    <ul class="sidenav-nav pl-0">
-        <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
-        <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
-        <li class="suha-dropdown-menu"><a href="#"><i class="lni lni-cart"></i>صفحات خرید</a>
-            <ul>
-                <li><a href="shop-grid.html">- فروشگاه شبکه</a></li>
-                <li><a href="shop-list.html">- لیست فروشگاه</a></li>
-                <li><a href="single-product.html">- مشخصات محصول</a></li>
-                <li><a href="featured-products.html">- محصولات برجسته</a></li>
-                <li><a href="flash-sale.html">- فروش فلش</a></li>
+
+    @if(!auth::guest())
+        <!-- Sidenav Profile-->
+            <div class="sidenav-profile">
+                <div class="user-profile"><img src="{{url('front/img/bg-img/9.jpg')}}" alt=""></div>
+                <div class="user-info">
+                    <h6 class="user-name mb-0">نیلوفر</h6>
+                    <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
+                </div>
+            </div>
+            <!-- Sidenav Nav-->
+            <ul class="sidenav-nav pl-0">
+                <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
+                <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
+
+
+
+                <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
+                <li>
+                    <form action="{{route('logout')}}" method="post">
+
+                        @csrf
+                        <button class="btn btn-danger" type="submit"><i class="lni lni-power-switch"></i>خروج از سیستم</button>
+
+                    </form>
+                </li>
             </ul>
-        </li>
-        <li><a href="pages.html"><i class="lni lni-empty-file"></i>تمام صفحات</a></li>
-        <li class="suha-dropdown-menu"><a href="wishlist-grid.html"><i class="lni lni-heart"></i>علاقه مندی های من</a>
-            <ul>
-                <li><a href="wishlist-grid.html">- شبکه مورد علاقه</a></li>
-                <li><a href="wishlist-list.html">- لیست دلخواه</a></li>
+
+        @else
+        <!-- Sidenav Profile-->
+            <div class="sidenav-profile">
+                <div class="user-profile"><img src="{{url('front/img/core-img/logo-small.png')}}" alt=""></div>
+                <div class="user-info">
+                    <h6 class="user-name mb-0">ربو تولدی دوباره</h6>
+                </div>
+            </div>
+            <!-- Sidenav Nav-->
+            <ul class="sidenav-nav pl-0">
+                <li><a href="login"><i class="lni lni-user"></i>ورود</a></li>
+
             </ul>
-        </li>
-        <li><a href="settings.html"><i class="lni lni-cog"></i>تنظیمات</a></li>
-        <li><a href="intro.html"><i class="lni lni-power-switch"></i>خروج از سیستم</a></li>
-    </ul>
+
+
+        @endif
+
     <!-- Go Back Button-->
     <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>
 </div>
