@@ -27,221 +27,15 @@
             </a>
             <!--end::Logo-->
 
-            <!--begin::Desktop جستجو-->
-            <div class="quick-search quick-search-inline ml-20 w-300px" id="kt_quick_search_inline">
-                <!--begin::Form-->
-                <form method="get" class="quick-search-form">
-                    <div class="input-group rounded bg-light">
-                        <div class="input-group-prepend">
-							<span class="input-group-text">
-								<span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:assets/media/svg/icons/عمومی/جستجو.svg--><svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-              fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-              fill="#000000" fill-rule="nonzero"/>
-    </g>
-</svg><!--end::Svg Icon--></span>							</span>
-                        </div>
 
-                        <input type="text" class="form-control h-45px" placeholder="جستجو..."/>
-
-                        <div class="input-group-append">
-							<span class="input-group-text">
-								<i class="quick-search-close ki ki-close icon-sm text-muted"></i>
-							</span>
-                        </div>
-                    </div>
-                </form>
-                <!--end::Form-->
-
-                <!--begin::جستجو Toggle-->
-                <div id="kt_quick_search_toggle" data-toggle="dropdown" data-offset="0px,1px"></div>
-                <!--end::جستجو Toggle-->
-
-                <!--begin::دراپ دان-->
-                <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg dropdown-menu-anim-up">
-                    <div class="quick-search-wrapper scroll" data-scroll="true" data-height="350"
-                         data-mobile-height="200">
-                    </div>
-                </div>
-                <!--end::دراپ دان-->
-            </div>
-            <!--end::Desktop جستجو-->
         </div>
         <!--end::راست-->
 
         <!--begin::Topbar-->
         <div class="topbar">
-            <!--begin::Tablet & Mobile جستجو-->
-            <div class="dropdown d-flex d-lg-none">
-                <!--begin::Toggle-->
-                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                    <div class="btn btn-icon btn-clean btn-lg btn-dropdown mr-1">
-        				<span class="svg-icon svg-icon-xl"><!--begin::Svg Icon | path:assets/media/svg/icons/عمومی/جستجو.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-              fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-              fill="#000000" fill-rule="nonzero"/>
-    </g>
-</svg><!--end::Svg Icon--></span></div>
-                </div>
-                <!--end::Toggle-->
 
-                <!--begin::دراپ دان-->
-                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-                    <div class="quick-search quick-search-dropdown" id="kt_quick_search_dropdown">
-                        <!--begin:Form-->
-                        <form method="get" class="quick-search-form">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:assets/media/svg/icons/عمومی/جستجو.svg--><svg
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-              fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-              fill="#000000" fill-rule="nonzero"/>
-    </g>
-</svg><!--end::Svg Icon--></span>                </span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="جستجو..."/>
-                                <div class="input-group-append">
-                <span class="input-group-text">
-                    <i class="quick-search-close ki ki-close icon-sm text-muted"></i>
-                </span>
-                                </div>
-                            </div>
-                        </form>
-                        <!--end::Form-->
 
-                        <!--begin::Scroll-->
-                        <div class="quick-search-wrapper scroll" data-scroll="true" data-height="325"
-                             data-mobile-height="200">
-                        </div>
-                        <!--end::Scroll-->
-                    </div>
-                </div>
-                <!--end::دراپ دان-->
-            </div>
-            <!--end::Tablet & Mobile جستجو-->
 
-            <!--begin::ایجاد کردن-->
-            <div class="dropdown">
-                <!--begin::Toggle-->
-                <div class="topbar-item mr-4" data-toggle="dropdown" data-offset="10px,0px">
-                    <div class="btn font-weight-bolder btn-sm btn-light-success px-5">
-                        ایجاد کردن
-                    </div>
-                </div>
-                <!--end::Toggle-->
-
-                <!--begin::دراپ دان-->
-                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-md">
-                    <!--begin::Navigation-->
-                    <ul class="navi navi-hover py-5">
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-drop"></i></span>
-                                <span class="navi-text">گروه جدید</span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-list-3"></i></span>
-                                <span class="navi-text">مخاطب</span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-rocket-1"></i></span>
-                                <span class="navi-text">گروه ها</span>
-                                <span class="navi-link-badge">
-                <span class="label label-light-primary label-inline font-weight-bold">جدید</span>
-            </span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-bell-2"></i></span>
-                                <span class="navi-text">تماس ها</span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-gear"></i></span>
-                                <span class="navi-text">تنظیمات</span>
-                            </a>
-                        </li>
-
-                        <li class="navi-separator my-3"></li>
-
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-magnifier-tool"></i></span>
-                                <span class="navi-text">راهنما</span>
-                            </a>
-                        </li>
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-                                <span class="navi-icon"><i class="flaticon2-bell-2"></i></span>
-                                <span class="navi-text">حریم خصوصی</span>
-                                <span class="navi-link-badge">
-                <span class="label label-light-danger label-rounded font-weight-bold">5</span>
-            </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!--end::Navigation-->
-                </div>
-                <!--end::دراپ دان-->
-            </div>
-            <!--end::ایجاد کردن-->
-
-            <!--begin::پنل سریع-->
-            <div class="topbar-item mr-4">
-                <div class="btn btn-icon btn-sm btn-clean btn-text-dark-75 btn-dropdown"
-                     id="kt_quick_panel_toggle">
-					<span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg--><svg
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"/>
-        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"/>
-        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"/>
-        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"/>
-    </g>
-</svg><!--end::Svg Icon--></span></div>
-            </div>
-            <!--end::اقدامات سریع-->
-
-            <!--begin::اقدامات سریع-->
-            <div class="topbar-item mr-4">
-                <div class="btn btn-icon btn-sm btn-clean btn-text-dark-75" id="kt_quick_actions_toggle">
-					<span class="svg-icon svg-icon-lg"><!--begin::Svg Icon | path:assets/media/svg/icons/layout/layout-4-blocks.svg--><svg
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect x="0" y="0" width="24" height="24"/>
-        <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"/>
-        <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
-              fill="#000000" opacity="0.3"/>
-    </g>
-</svg><!--end::Svg Icon--></span></div>
-            </div>
-            <!--end::Quick panel-->
 
             <!--begin::User-->
             <div class="topbar-item mr-4">
@@ -260,14 +54,32 @@
             </div>
             <!--end::User-->
 
-            <!--begin::اعلان ها-->
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-sm btn-primary font-weight-bolder p-0"
-                     id="kt_quick_notifications_toggle">
-                    3
-                </div>
+
+            <!--begin::User-->
+            <div class="topbar-item mr-4">
+                <form action="{{route('logout')}}" method="post">
+
+                    @csrf
+
+                <button type="submit" class="btn btn-icon btn-sm btn-clean btn-text-dark-75" id="kt_quick_user_toggle">
+					<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\الکترونیک\Shutdown.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M7.62302337,5.30262097 C8.08508802,5.000107 8.70490146,5.12944838 9.00741543,5.59151303 C9.3099294,6.05357769 9.18058801,6.67339112 8.71852336,6.97590509 C7.03468892,8.07831239 6,9.95030239 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,9.99549229 17.0108275,8.15969002 15.3875704,7.04698597 C14.9320347,6.73472706 14.8158858,6.11230651 15.1281448,5.65677076 C15.4404037,5.20123501 16.0628242,5.08508618 16.51836,5.39734508 C18.6800181,6.87911023 20,9.32886071 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 C4,9.26852332 5.38056879,6.77075716 7.62302337,5.30262097 Z" fill="#000000" fill-rule="nonzero"/>
+        <rect fill="#000000" opacity="0.3" x="11" y="3" width="2" height="10" rx="1"/>
+    </g>
+</svg><!--end::Svg Icon--></span></button>
+                </form>
             </div>
-            <!--end::اعلان ها-->
+            <!--end::User-->
+
+
+
+
+
+
+
+
         </div>
         <!--end::Topbar-->
     </div>

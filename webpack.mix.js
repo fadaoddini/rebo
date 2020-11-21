@@ -11,7 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+
+mix.styles([
+
+    'resources/js/admin/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css',
+    'resources/js/admin/plugins/global/plugins.bundle.rtl.css',
+    'resources/js/admin/plugins/custom/prismjs/prismjs.bundle.rtl.css',
+    // 'resources/css/back/css/style.bundle.rtl.css',
+
+],'public/admin/css/app.css');
+
+mix.scripts([
+    'resources/js/admin/plugins/global/plugins.bundle.js',
+    'resources/js/admin/plugins/custom/prismjs/prismjs.bundle.js',
+    'resources/js/admin/js/scripts.bundle.js',
+    'resources/js/admin/plugins/custom/fullcalendar/fullcalendar.bundle.js',
+    'resources/js/admin/js/pages/widgets.js'
+],'public/admin/js/app.js');

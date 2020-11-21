@@ -75,16 +75,11 @@
 
                     </div>
 
-                    <!-- Form Group -->
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label>رمز عبور را تأیید کنید</label>
-                        <span class="eye-icon flaticon-eye"></span>
-                        <input class="@error('password_confirmation') is-invalid @enderror form-control" type="password" name="password_confirmation"  placeholder="تکرار کلمه عبور" >
 
-                    </div>
+
 
                     <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                        <textarea class="form-control" placeholder="پیام شما"></textarea>
+                        <textarea name="description" class="form-control" placeholder="پیام شما">{{$user->description}}</textarea>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 form-group text-right">

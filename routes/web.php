@@ -14,13 +14,26 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\Front\IndexController@index')->name('index');
 
 
 /*PanelAdmin*/
-Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo');
+Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo')->middleware('auth');
+
+/*User*/
+Route::get('/useradmin', 'App\Http\Controllers\admin\UserController@index')->name('useradmin');
+
+
+
+/*UserAdmin*/
+Route::prefix('admin')->group(function () {
+    Route::get('/profile/{user}', 'App\Http\Controllers\admin\UserController@edit')->name('adminprofile');
+    Route::post('/upadteprofile/{user}', 'App\Http\Controllers\admin\UserController@update')->name('adminupadteprofile');
+    Route::get('/deleteprofile/{user}', 'App\Http\Controllers\admin\UserController@destroy')->name('adminuserdelete');
+    Route::get('/statususer/{user}', 'App\Http\Controllers\admin\UserController@updatestatuse')->name('statuschange');
+});
 
 
 
