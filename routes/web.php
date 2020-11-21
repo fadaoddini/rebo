@@ -16,10 +16,11 @@ use App\Http\Controllers\IndexController;
 
 //Auth::routes();
 
+Route::get('/', 'App\Http\Controllers\Front\IndexController@index')->name('index');
+
+
 /*PanelAdmin*/
 Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
