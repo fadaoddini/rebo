@@ -20,7 +20,7 @@ Route::get('/', 'App\Http\Controllers\Front\IndexController@index')->name('index
 
 
 /*PanelAdmin*/
-Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo')->middleware('auth');
+Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo')->middleware('checkrole');
 
 /*User*/
 Route::get('/useradmin', 'App\Http\Controllers\admin\UserController@index')->name('useradmin');

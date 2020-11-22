@@ -52,7 +52,7 @@
 <!-- Side Nav Wrapper-->
 <div class="suha-sidenav-wrapper" id="sidenavWrapper">
 
-    @if(!auth::guest())
+    @auth
         <!-- Sidenav Profile-->
             <div class="sidenav-profile">
                 <div class="user-profile"><img src="{{url('front/img/bg-img/9.jpg')}}" alt=""></div>
@@ -61,6 +61,16 @@
                     <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
                 </div>
             </div>
+
+
+            @if(Auth::user()->role=='1')
+                <ul class="sidenav-nav pl-0">
+
+                    <li><a href="{{route('rebo')}}"><i class="lni lni-cog"></i>مدیریت</a></li>
+
+                </ul>
+
+        @endif
             <!-- Sidenav Nav-->
             <ul class="sidenav-nav pl-0">
                 <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
@@ -79,6 +89,9 @@
                 </li>
             </ul>
 
+
+
+
         @else
         <!-- Sidenav Profile-->
             <div class="sidenav-profile">
@@ -94,7 +107,7 @@
             </ul>
 
 
-        @endif
+        @endauth
 
     <!-- Go Back Button-->
     <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-right"></i></div>

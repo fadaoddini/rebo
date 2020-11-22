@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Checkrole
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -17,13 +17,9 @@ class Checkrole
     public function handle(Request $request, Closure $next)
     {
 
-        if (auth()->check() && auth()->user()->role=='2'){
-            return redirect(route('index'));
-        }elseif (auth()->check() && auth()->user()->role=='1'){
+        if (auth()->check() && auth()->user()->role == 1 && auth()->user()->status==1 ){
             return $next($request);
         }
-
-        return redirect(route('login'));
-
+        return redirect(route('index'));
     }
 }
