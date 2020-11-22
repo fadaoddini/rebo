@@ -50,7 +50,8 @@
                         </th>
                         <th class="pr-0" style="width: 50px"></th>
                         <th style="min-width: 200px">عنوان</th>
-                        <th style="min-width: 150px">ارتباط</th>
+                        <th style="min-width: 150px">عنوان انگلیسی</th>
+                        <th style="min-width: 150px">جایگاه</th>
 
 
                         <th class="pr-0 text-center" style="min-width: 150px">عملیات</th>
@@ -73,7 +74,7 @@
                             <td class="pr-0">
                                 <div class="symbol symbol-50 symbol-light mt-1">
                                 <span class="symbol-label">
-                                    <img src="assets/media/svg/avatars/001-boy.svg" class="h-75 align-self-end" alt="">
+                                    <img src="{{url('/images/category/thumb/'.$category->image)}}" class="h-75 align-self-end" alt="">
                                 </span>
                                 </div>
                             </td>
@@ -87,7 +88,14 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$category->slug}}
+                                    {{$category->en_name}}
+
+                                </p>
+                            </td>
+
+<td class="pl-0">
+                                <p class="text-dark-75   text-hover-primary   ">
+                                    {{$category->place}}
 
                                 </p>
                             </td>

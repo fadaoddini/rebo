@@ -79,8 +79,7 @@ class SliderController extends Controller
 
         ], $message);
 
-        /*   $category->name = $request->name;
-           $category->slug = $request->slug;*/
+
 
 
         $file = $request->file('image');

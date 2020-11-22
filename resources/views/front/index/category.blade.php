@@ -5,42 +5,25 @@
         </div>
         <div class="product-catagory-wrap">
             <div class="row g-3">
+
+
+                @foreach($categories as $cat)
+
                 <!-- Single Catagory Card-->
                 <div class="col-4">
                     <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-heart"></i><span>زنانه</span></a></div>
+                        <div class="card-body"><a href="{{$cat->slug}}">
+
+                                <img src="{{url('images/category/thumb/'.$cat->image)}}" >
+
+
+                                <span>{{$cat->name}}</span></a></div>
                     </div>
                 </div>
-                <!-- Single Catagory Card-->
-                <div class="col-4">
-                    <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-juice"></i><span>آب میوه</span></a></div>
-                    </div>
-                </div>
-                <!-- Single Catagory Card-->
-                <div class="col-4">
-                    <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-pizza"></i><span>خوراکی ها</span></a></div>
-                    </div>
-                </div>
-                <!-- Single Catagory Card-->
-                <div class="col-4">
-                    <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-basketball"></i><span>ورزش ها</span></a></div>
-                    </div>
-                </div>
-                <!-- Single Catagory Card-->
-                <div class="col-4">
-                    <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-tshirt"></i><span>مردان</span></a></div>
-                    </div>
-                </div>
-                <!-- Single Catagory Card-->
-                <div class="col-4">
-                    <div class="card catagory-card">
-                        <div class="card-body"><a href="catagory.html"><i class="lni lni-island"></i><span>مسافرت </span></a></div>
-                    </div>
-                </div>
+
+                @endforeach
+
+
             </div>
         </div>
     </div>

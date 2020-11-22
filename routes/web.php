@@ -41,7 +41,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-/*Levels*/
+/*Slider*/
 Route::prefix('admin/slider')->middleware('checkrole')->group(function () {
 
     Route::get('/', 'App\Http\Controllers\admin\SliderController@index')->name('admin.slider');
@@ -54,6 +54,18 @@ Route::prefix('admin/slider')->middleware('checkrole')->group(function () {
 });
 
 
+
+/*Categories*/
+Route::prefix('admin/categories')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\CategoryController@index')->name('admin.cat');
+    Route::get('/create', 'App\Http\Controllers\admin\CategoryController@create')->name('admin.cat.create');
+    Route::post('/store', 'App\Http\Controllers\admin\CategoryController@store')->name('admin.cat.store');
+    Route::get('/edit/{category}', 'App\Http\Controllers\admin\CategoryController@edit')->name('admin.cat.edit');
+    Route::post('/update/{category}', 'App\Http\Controllers\admin\CategoryController@update')->name('admin.cat.update');
+    Route::get('/delete/{category}', 'App\Http\Controllers\admin\CategoryController@destroy')->name('admin.cat.delete');
+
+});
 
 
 
