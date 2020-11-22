@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use http\Exception;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -15,7 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $webtitle = "پروفایل";
+
+
+
+        return view('front.user.main', compact('webtitle'));
     }
 
     /**
@@ -56,9 +63,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $user_id=$user->id;
+        $webtitle = "ویرایش پروفایل";
+
+
+        return view('front/user/editprofile', compact('webtitle', 'user'));
     }
 
     /**
@@ -68,9 +79,82 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+
+        if (!empty($request->password)) {
+            $message = [
+                'name.required' => 'نام را پر کنید',
+                'family.required' => 'نام خاننوادگی را پر کنید',
+                'mobile.required' => 'موبایل را پر کنید',
+                'city.required' => 'شهر را پر کنید',
+                'password.min' => 'تعداد کاراکتر رمز عبور حداقل 5 رقم می باشد',
+                'password.confirmed' => 'مطابقت رمز عبور با مشکل مواجه شده است لطفا مجددا سعی نمائید',
+
+            ];
+            $validatedData = $request->validate([
+                'name' => ' required ',
+                'family' => ' required ',
+                'mobile' => ' required ',
+                'city' => ' required ',
+                'password'=> [ 'min:5', 'confirmed'],
+
+
+            ], $message);
+
+
+
+
+                $password = Hash::make($request->password);
+                $user->password = $password;
+
+
+
+
+
+
+        } else {
+            $message = [
+                'name.required' => 'نام را پر کنید',
+                'family.required' => 'نام خانوادگی را پر کنید',
+                'mobile.required' => 'موبایل را پر کنید',
+                'city.required' => 'شهر را پر کنید',
+
+
+            ];
+            $validatedData = $request->validate([
+                'name' => ' required ',
+                'family' => ' required ',
+                'mobile' => ' required ',
+                'city' => ' required ',
+
+
+            ], $message);
+
+        }
+
+
+        $user->name = $request->name;
+        $user->description = $request->description;
+        $user->family = $request->family;
+        $user->mobile = $request->mobile;
+        $user->city = $request->city;
+
+        Try {
+
+            $user->save();
+
+        } catch (Exception $exception) {
+
+
+            $msg = $exception->getCode();
+            return redirect()->back()->with('warning', $msg);
+        }
+
+        $msg = "ویرایش با موفقیت انجام شد";
+
+        return redirect()->back()->with('success', $msg);
+
     }
 
     /**
@@ -79,6 +163,54 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function updatepicprofile(Request $request, User $user){
+
+
+        $file = $request->file('image');
+
+
+        $ext=$file->getClientOriginalExtension();
+
+        $ext=strtolower($ext);
+        $exitpic='profile'.$user->id;
+
+
+        Try {
+            if (($ext=="jpg") or ($ext=="jpeg") or ($ext=="png") ){
+                Image::make($file)->resize(300, 300)->save('images/profile/thumb/'.$exitpic.'.'.$ext);
+                $file->move(public_path('images/profile'),$exitpic.'.'.$ext);
+
+                $user->image = $exitpic.'.'.$ext;
+
+                $ok=1;
+                $msg = "فرمت ".$ext." فایل با موفقیت ارسال شد";
+            }else{
+                $msg = "فرمت تصویر باید یکی از موارد jpg-jpeg-png  باشد!";
+                return redirect()->back()->with('warning', $msg);
+            }
+
+            $user->save();
+
+
+        } catch (Exception $exception) {
+
+            $msg = "بروزرسانی با خطا مواجه شد!";
+            return redirect(route('admin.level.edit'))->with('warning', $msg);
+
+
+        }
+
+
+
+     //   $msg = "ویرایش با موفقیت انجام شد";
+
+        return redirect()->back()->with('success', $msg);
+    }
+
+
+
     public function destroy($id)
     {
         //

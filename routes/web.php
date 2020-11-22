@@ -17,6 +17,10 @@ use App\Http\Controllers\IndexController;
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\Front\IndexController@index')->name('index');
+Route::get('/profile', 'App\Http\Controllers\Front\UserController@index')->name('profile')->middleware('auth');
+Route::get('/editprofile/{user}', 'App\Http\Controllers\Front\UserController@edit')->name('editprofile')->middleware('auth');
+Route::post('/updateprofile/{user}', 'App\Http\Controllers\Front\UserController@update')->name('updateprofile')->middleware('auth');
+Route::post('/updatepicprofile/{user}', 'App\Http\Controllers\Front\UserController@updatepicprofile')->name('updatepicprofile')->middleware('auth');
 
 
 /*PanelAdmin*/

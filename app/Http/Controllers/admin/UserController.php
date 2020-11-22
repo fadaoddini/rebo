@@ -93,6 +93,7 @@ class UserController extends Controller
                 'mobile.required' => 'موبایل را پر کنید',
                 'city.required' => 'شهر را پر کنید',
                 'password.min' => 'تعداد کاراکتر رمز عبور حداقل 5 رقم می باشد',
+                'password_confirmation.min' => 'تعداد کاراکتر تکرار رمز عبور حداقل 5 رقم می باشد',
 
             ];
             $validatedData = $request->validate([
@@ -101,6 +102,7 @@ class UserController extends Controller
                 'mobile' => ' required ',
                 'city' => ' required ',
                 'password'=> 'min:5',
+                'password_confirmation'=> 'min:5',
 
 
             ], $message);

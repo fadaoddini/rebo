@@ -1,5 +1,5 @@
 <!-- Logo Wrapper-->
-<div class="logo-wrapper"><a href="#"><img src="{{url('front/img/core-img/logo-small.png')}}" alt="Rebo"></a></div>
+<div class="logo-wrapper"><a href="{{route('index')}}"><img width="50" src="{{url('/images/setting/logo.png')}}" alt="Rebo"></a></div>
 <!-- Search Form-->
 <div class="top-search-form">
     <form action="#" method="">

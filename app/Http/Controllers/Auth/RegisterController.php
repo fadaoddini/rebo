@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'email.required' => 'ایمیل را پر کنید',
             'email.unique' => 'ایمیل تکراری است',
             'password.required' => 'رمز عبور را پر کنید',
-            'password.min' => 'تعداد کاراکتر رمز عبور حداقل 8 رقم می باشد',
+            'password.min' => 'تعداد کاراکتر رمز عبور حداقل 5 رقم می باشد',
             'password.confirmed' => 'مطابقت رمز عبور با مشکل مواجه شده است لطفا مجددا سعی نمائید',
 
 
@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'family' => ['required', 'string', 'max:255'],
             'mobile' => ['required', 'string', 'max:11', 'min:11', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
 
 
         ],$message);

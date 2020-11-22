@@ -4,10 +4,20 @@
 @auth
     <!-- Sidenav Profile-->
         <div class="sidenav-profile">
-            <div class="user-profile"><img src="{{url('front/img/bg-img/9.jpg')}}" alt=""></div>
+            <div class="user-profile">
+
+                @if((auth()->user()->image) != "")
+
+                    <img src="{{url('/images/profile/thumb/'.auth()->user()->image)}}" alt="{{auth()->user()->family}}">
+                @else
+
+                    <img src="{{url('/images/profile/profile.png')}}" alt="{{auth()->user()->family}}">
+                @endif
+
+            </div>
             <div class="user-info">
-                <h6 class="user-name mb-0">نیلوفر</h6>
-                <p class="available-balance">حساب شما <span><span class="counter">350000</span></span><span> تومان</span></p>
+                <h6 class="user-name mb-0">{{auth()->user()->name}}</h6>
+                <p class="available-balance">امتیاز شما <span><span class="counter">{{auth()->user()->emtiaz}}</span></span><span> می باشد</span></p>
             </div>
         </div>
 
@@ -22,7 +32,7 @@
     @endif
     <!-- Sidenav Nav-->
         <ul class="sidenav-nav pl-0">
-            <li><a href="profile.html"><i class="lni lni-user"></i>پروفایل من</a></li>
+            <li><a href="{{route('profile')}}"><i class="lni lni-user"></i>پروفایل من</a></li>
             <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>اطلاعیه ها <span class="ml-3 badge badge-warning">3</span></a></li>
 
 
