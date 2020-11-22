@@ -1,6 +1,6 @@
 @extends('back.index')
 @section('webtitleadmin')
-    مدیریت سطح بندی ها
+    مدیریت اسلایدر
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">ویرایش سطح بندی</span>
+                <span class="card-label font-weight-bolder text-dark">ویرایش اسلایدر</span>
 
             </h3>
 
@@ -18,32 +18,67 @@
         <!--begin::Body-->
         <div class="card-body py-0">
 
-            <form method="post" action="{{route('admin.level.update',$level->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('admin.slider.update',$slider->id)}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row clearfix">
                     {{-- سمت راست--}}
                     <div class="col-12 col-md-8">
                         <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                        <input class="@error('name') is-invalid @enderror form-control" type="text" name="name" value="{{$level->name}}" placeholder="نام" >
-
-                        </span>
-                    </div>
 
 
-                   {{-- <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                        <input class="@error('slug') is-invalid @enderror form-control" type="text" name="slug" value="{{$level->slug}}" placeholder="نام مستعار" >
+                            <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                <label>عنوان اسلایدر</label>
+                                <input class="@error('name') is-invalid @enderror form-control" type="text" name="name" value="{{$slider->name}}" placeholder="عنوان" >
 
-                        </span>
-                    </div>
---}}
-<div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                        <textarea class="textareatiny @error('description') is-invalid @enderror form-control"  name="description"  >
+                                </span>
+                            </div>
 
-                            {{$level->description}}
-                        </textarea>
-                        </span>
-                    </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                <label>شعار اسلایدر</label>
+                                <input class="@error('lid') is-invalid @enderror form-control" type="text" name="lid" value="{{$slider->lid}}" placeholder="شعار" >
+
+                                </span>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                <label>نوشته روی دکمه</label>
+                                <input class="@error('title_link') is-invalid @enderror form-control" type="text" name="title_link" value="{{$slider->title_link}}" placeholder="عنوان دکمه" >
+
+                                </span>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                <label>لینک اسلایدر</label>
+                                <input class="@error('link') is-invalid @enderror form-control" type="text" name="link" value="{{$slider->link}}" placeholder="لینک اسلایدر" >
+
+                                </span>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         </div>
                     </div>
@@ -62,10 +97,10 @@
                             </div>
                             <div class="col-12">
                                 <span class="m-4" >
-                            <img width="100%" src="{{url('/images/thumb/'.$level->image)}}" class="h-75 align-self-end" alt="">
+                            <img width="100%" src="{{url('/images/slider/thumb/'.$slider->image)}}" class="h-75 align-self-end" alt="">
                         </span>
                                 <hr>
-                                <a class="btn btn-success btn-sm " href="{{url('/images/'.$level->image)}}">
+                                <a class="btn btn-success btn-sm " href="{{url('/images/slider/'.$slider->image)}}">
                                     <i class="fa fa-folder"></i>
                                     دانلود کنید!
                                 </a>
@@ -87,7 +122,6 @@
 
 
                     <div class="col-lg-12 col-md-12 col-sm-12 form-group text-right">
-                        <button class="btn font-weight-bolder btn-sm btn-light-danger px-5" type="submit" name="submit-form"><span class="txt">لغو <i class="fa fa-angle-left"></i></span></button>
                         <button class="btn font-weight-bolder btn-sm btn-light-success px-5" type="submit" name="submit-form"><span class="txt">ذخیره تغییرات <i class="fa fa-angle-left"></i></span></button>
                     </div>
 

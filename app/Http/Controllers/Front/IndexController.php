@@ -3,16 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 
-use App\frontmodel\Article;
-use App\frontmodel\Order;
-use App\frontmodel\User;
-use App\frontmodel\Level;
-use App\frontmodel\Learn;
+
+
+
+
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use App\Models\Category;
-use App\Models\Examlist;
-use App\Models\Option;
+
+
+use App\Models\Slider;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,9 +29,10 @@ class IndexController extends Controller
 
         $webtitle = "صفحه اصلی";
 
+        $sliders = slider::orderBy('id', 'DESC')->get();
 
 
-        return view('front.index.main', compact('webtitle'));
+        return view('front.index.main', compact('webtitle','sliders'));
     }
 
 

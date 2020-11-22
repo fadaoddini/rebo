@@ -24,8 +24,7 @@
 
 
 
-<!-- PWA Install Alert-->
-@include('front.alertpwa')
+
 
 
 <div class="page-content-wrapper">

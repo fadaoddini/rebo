@@ -1,5 +1,7 @@
 @extends('front.index')
 @section('content')
+    <!-- PWA Install Alert-->
+    @include('front.alertpwa')
     @include('front.index.topslider')
     @include('front.index.category')
     @include('front.index.vije')

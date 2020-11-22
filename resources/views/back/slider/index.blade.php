@@ -1,6 +1,6 @@
 @extends('back.index')
 @section('webtitleadmin')
-    پنل مدیریت سطوح
+     مدیریت اسلایدر
 @endsection
 @section('content')
 
@@ -9,11 +9,11 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">مدیریت سطوح</span>
-                <span class="text-muted mt-3 font-weight-bold font-size-sm">تعداد سطح ها </span>
+                <span class="card-label font-weight-bolder text-dark">مدیریت اسلایدر</span>
+
             </h3>
             <div class="card-toolbar">
-                <a href="{{route('admin.level.create')}}" class="btn btn-success font-weight-bolder font-size-sm">
+                <a href="{{route('admin.slider.create')}}" class="btn btn-success font-weight-bolder font-size-sm">
                 <span class="svg-icon svg-icon-md svg-icon-white">
 
                     <!--begin::Svg Icon | path:assets/media/svg/icons/ارتباطات/Add-user.svg-->
@@ -29,7 +29,7 @@
 </svg>
                     <!--end::Svg Icon-->
 
-                </span>افزودن سطح
+                </span>افزودن اسلایدر
                 </a>
             </div>
         </div>
@@ -48,10 +48,12 @@
                                 <span></span>
                             </label>
                         </th>
-                        <th class="pr-0" style="width: 50px"></th>
+                        <th class="pr-0" style="width: 200px"></th>
                         <th style="min-width: 200px">عنوان</th>
+                        <th style="min-width: 200px">شعار اسلایدر</th>
+                        <th style="min-width: 100px"> عنوان روی دکمه</th>
+                        <th style="min-width: 300px">لینک</th>
 
-                        <th style="min-width: 150px">ارتباط</th>
 
 
                         <th class="pr-0 text-center" style="min-width: 150px">عملیات</th>
@@ -60,7 +62,7 @@
                     <tbody>
 
 
-                    @foreach($levels as $level)
+                    @foreach($sliders as $slider)
 
 
 
@@ -74,31 +76,47 @@
                             <td class="pr-0">
                                 <div class="symbol symbol-50 symbol-light mt-1">
                                 <span class="symbol-label">
-                                    <img src="{{url('/images/thumb/'.$level->image)}}" class="h-75 align-self-end" alt="{{$level->name}}">
+                                    <img src="{{url('/images/slider/thumb/'.$slider->image)}}" class="h-75 align-self-end" alt="{{$slider->name}}">
                                 </span>
                                 </div>
                             </td>
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$level->name}}
+                                    {{$slider->name}}
 
                                 </p>
                             </td>
 
-
-                            <td class="pl-0">
+<td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$level->slug}}
+                                    {{$slider->lid}}
 
                                 </p>
                             </td>
+
+<td class="pl-0">
+                                <p class="text-dark-75   text-hover-primary   ">
+                                    {{$slider->title_link}}
+
+                                </p>
+                            </td>
+
+<td class="pl-0">
+                                <p class="text-dark-75   text-hover-primary   ">
+                                    {{$slider->link}}
+
+                                </p>
+                            </td>
+
+
+
 
 
 
 
                             <td class="pr-0 text-center">
 
-                                <a href="{{route('admin.level.edit',$level->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                <a href="{{route('admin.slider.edit',$slider->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/ارتباطات/Write.svg--><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -115,7 +133,7 @@
 
 
 
-                                <a href="{{route('admin.level.delete',$level->id)}}" onclick="return confirm('آیا سطح بندی حذف شود؟');" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                                <a href="{{route('admin.slider.delete',$slider->id)}}" onclick="return confirm('آیا اسلایدر حذف شود؟');" class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/general/زباله ها.svg--><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -135,7 +153,7 @@
                     </tbody>
                 </table>
             </div>
-        {{ $levels->links() }}
+        {{ $sliders->links() }}
             <!--end::Table-->
         </div>
         <!--end::Body-->

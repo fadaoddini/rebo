@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Controllers\Controller;
+
+
 class UserController extends Controller
 {
     public $websitename="rebo";

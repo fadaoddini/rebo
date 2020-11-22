@@ -41,6 +41,22 @@ Route::prefix('admin')->group(function () {
 
 
 
+/*Levels*/
+Route::prefix('admin/slider')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\SliderController@index')->name('admin.slider');
+    Route::get('/create', 'App\Http\Controllers\admin\SliderController@create')->name('admin.slider.create');
+    Route::post('/store', 'App\Http\Controllers\admin\SliderController@store')->name('admin.slider.store');
+    Route::get('/edit/{slider}', 'App\Http\Controllers\admin\SliderController@edit')->name('admin.slider.edit');
+    Route::post('/update/{slider}', 'App\Http\Controllers\admin\SliderController@update')->name('admin.slider.update');
+    Route::get('/delete/{slider}', 'App\Http\Controllers\admin\SliderController@destroy')->name('admin.slider.delete');
+
+});
+
+
+
+
+
 
 
 

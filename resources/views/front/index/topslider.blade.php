@@ -1,29 +1,23 @@
+
+
+
 <div class="hero-slides owl-carousel">
-    <!-- Single Hero Slide-->
-    <div class="single-hero-slide" style="background-image: url('front/img/bg-img/1.jpg')">
+
+
+    @foreach($sliders as $slide)
+
+    <div class="single-hero-slide" style="background-image: url('images/slider/thumb/{{$slide->image}}')">
         <div class="slide-content h-100 d-flex align-items-center">
             <div class="container">
-                <h4 class="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">آمازون اکو</h4>
-                <p class="text-white" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">نسل 3 ، ذغال سنگی</p><a class="btn btn-primary btn-sm" href="#" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="1000ms">خرید</a>
+                <h4 class="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">{{$slide->name}}</h4>
+                <p class="text-white" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">{{$slide->lid}}</p><a class="btn btn-primary btn-sm" href="{{$slide->link}}" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="1000ms">{{$slide->title_link}}</a>
             </div>
         </div>
     </div>
-    <!-- Single Hero Slide-->
-    <div class="single-hero-slide" style="background-image: url('front/img/bg-img/2.jpg')">
-        <div class="slide-content h-100 d-flex align-items-center">
-            <div class="container">
-                <h4 class="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms"> شمع  تزیینی</h4>
-                <p class="text-white" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">اکنون فقط 22 تومان</p><a class="btn btn-success btn-sm" href="#" data-animation="fadeInUp" data-delay="500ms" data-wow-duration="1000ms">خرید</a>
-            </div>
-        </div>
-    </div>
-    <!-- Single Hero Slide-->
-    <div class="single-hero-slide" style="background-image: url('front/img/bg-img/3.jpg')">
-        <div class="slide-content h-100 d-flex align-items-center">
-            <div class="container">
-                <h4 class="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">بهترین مبلمان</h4>
-                <p class="text-white" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">  دارای  ضمانت </p><a class="btn btn-danger btn-sm" href="#" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="1000ms">خرید</a>
-            </div>
-        </div>
-    </div>
+
+
+    @endforeach
+
+
+
 </div>
