@@ -26,6 +26,7 @@ class User extends Authenticatable
       'sum_kharid'=>0,
       'emtiaz'=>50,
         'city'=>'city',
+        'image'=>'profile.png',
         'description'=>'description'
     ];
 

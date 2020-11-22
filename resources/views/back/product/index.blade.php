@@ -1,6 +1,6 @@
 @extends('back.index')
 @section('webtitleadmin')
-    پنل مدیریت دوره ها
+    پنل مدیریت محصولات
 @endsection
 @section('content')
 
@@ -9,11 +9,11 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">مدیریت مطالب</span>
-                <span class="text-muted mt-3 font-weight-bold font-size-sm">تعداد مطالب </span>
+                <span class="card-label font-weight-bolder text-dark">مدیریت محصولات</span>
+
             </h3>
             <div class="card-toolbar">
-                <a href="{{route('admin.article.create')}}" class="btn btn-success font-weight-bolder font-size-sm">
+                <a href="{{route('admin.product.create')}}" class="btn btn-success font-weight-bolder font-size-sm">
                 <span class="svg-icon svg-icon-md svg-icon-white">
 
                     <!--begin::Svg Icon | path:assets/media/svg/icons/ارتباطات/Add-user.svg-->
@@ -29,7 +29,7 @@
 </svg>
                     <!--end::Svg Icon-->
 
-                </span>افزودن مطلب
+                </span>افزودن محصول
                 </a>
             </div>
         </div>
@@ -52,7 +52,7 @@
                         <th style="min-width: 200px">عنوان</th>
                         <th style="min-width: 100px">قیمت</th>
                         <th style="min-width: 50px">تخفیف</th>
-                        <th style="min-width: 50px">اشتراک</th>
+                        <th style="min-width: 50px">ویژه / عادی</th>
 
                         <th style="min-width: 50px">لایک</th>
                         <th style="min-width: 50px">بازدید</th>
@@ -68,8 +68,8 @@
                     <tbody>
 
 
-                    @foreach($articles as $article)
-                        @switch($article->status)
+                    @foreach($products as $product)
+                        @switch($product->status)
 
                             @case(1)
                             @php $status="منتشر شده";
@@ -112,47 +112,13 @@
                             <td >
                                 <div class="symbol symbol-50 symbol-light mt-1">
                                 <span class="symbol-label">
-
-                                   <?php
-
-                                    $ext=$article->formating;
-
-                                    if(($ext == "jpg") or ($ext == "jpeg") or ($ext == "png") or ($ext == "gif")){
-                                       ?>
-
-
-    <i  class="icon-xl la la-camera-retro text-success"></i>
-
-
-                                    <?php
-                                   }elseif (($ext == "mp4") or ($ext == "avi")) {
-                                        ?>
-
-    <i class="icon-xl la la-video text-danger"></i>
-                                       <?php
-                                       }elseif (($ext == "pdf") or ($ext == "zip")) {
-                                        ?>
-
-    <i class="icon-xl la la-file-text text-secondary"></i>
-                                       <?php
-                                       }elseif ($ext == "mp3") {
-                                        ?>
-
-    <i class="icon-xl la fab la-itunes-note text-warning"></i>
-
-                                       <?php
-                                       }
-                                   ?>
-
-
-
-
+                                    <img src="{{url('/images/product/thumb/'.$product->image)}}" class="h-75 align-self-end" alt="{{$product->slug}}">
                                 </span>
                                 </div>
                             </td>
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$article->name}}
+                                    {{$product->name}}
 
                                 </p>
                             </td>
@@ -160,7 +126,7 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$article->price}}
+                                    {{$product->price}}
 
                                 </p>
                             </td>
@@ -168,7 +134,7 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$article->takhfif}} %
+                                    {{$product->takhfif}} %
 
                                 </p>
                             </td>
@@ -177,7 +143,7 @@
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
 
-                                    @if($article->special==1)
+                                    @if($product->vije==1)
 
                                     <p class="text-white   text-hover-primary badge badge-success   ">
                                         ویژه
@@ -201,7 +167,7 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$article->numlike}}
+                                    {{$product->likee}}
 
                                 </p>
                             </td>
@@ -210,7 +176,7 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$article->hit}}
+                                    {{$product->hit}}
 
                                 </p>
                             </td>
@@ -218,7 +184,7 @@
 
                             <td class="pl-0">
 
-                                @foreach($article->categories()->pluck('name') as $cat)
+                                @foreach($product->categories()->pluck('name') as $cat)
                                 <p class="  text-hover-primary badge badge-secondary   ">
 
                                   {{$cat}}
@@ -231,14 +197,14 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary badge badge-white   ">
-                                    {{$article->user->family}}
+                                    {{$product->user->family}}
 
                                 </p>
                             </td>
 
 
                             <td class="pl-0">
-                                <a href="{{route('statuschangearticle',$article->id)}}" class="badge  {{$badgecolorstatus}} ">
+                                <a href="{{route('statuschangeproduct',$product->id)}}" class="badge  {{$badgecolorstatus}} ">
                                     {{$status}}
 
                                 </a>
@@ -249,7 +215,7 @@
 
                             <td class="pr-0 text-center">
 
-                                <a href="{{route('admin.article.edit',$article->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                <a href="{{route('admin.product.edit',$product->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/ارتباطات/Write.svg--><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -266,7 +232,7 @@
 
 
 
-                                <a href="{{route('admin.article.delete',$article->id)}}" onclick="return confirm('آیا مطلب حذف شود؟');" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                                <a href="{{route('admin.product.delete',$product->id)}}" onclick="return confirm('آیا محصول حذف شود؟');" class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/general/زباله ها.svg--><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -286,7 +252,7 @@
                     </tbody>
                 </table>
             </div>
-        {{ $articles->links() }}
+        {{ $products->links() }}
             <!--end::Table-->
         </div>
         <!--end::Body-->

@@ -14,7 +14,7 @@
                     <div class="card catagory-card">
                         <div class="card-body"><a href="{{$cat->slug}}">
 
-                                <img src="{{url('images/category/thumb/'.$cat->image)}}" >
+                                <img src="{{url('images/category/thumb/'.$cat->image)}}" alt="{{$cat->slug}}" >
 
 
                                 <span>{{$cat->name}}</span></a></div>

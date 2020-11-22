@@ -69,6 +69,19 @@ Route::prefix('admin/categories')->middleware('checkrole')->group(function () {
 
 
 
+/*Products*/
+Route::prefix('admin/products')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\ProductController@index')->name('admin.product');
+    Route::get('/create', 'App\Http\Controllers\admin\ProductController@create')->name('admin.product.create');
+    Route::post('/store', 'App\Http\Controllers\admin\ProductController@store')->name('admin.product.store');
+    Route::get('/edit/{product}', 'App\Http\Controllers\admin\ProductController@edit')->name('admin.product.edit');
+    Route::post('/update/{product}', 'App\Http\Controllers\admin\ProductController@update')->name('admin.product.update');
+    Route::get('/delete/{product}', 'App\Http\Controllers\admin\ProductController@destroy')->name('admin.product.delete');
+    Route::get('/statuschange/{product}', 'App\Http\Controllers\admin\ProductController@updatechangeproduct')->name('statuschangeproduct');
+});
+
+
 
 
 

@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 
 
+use App\Models\admin\Product;
 use App\Models\Slider;
 use App\Models\admin\Category;
 use Illuminate\Http\Response;
@@ -32,9 +33,10 @@ class IndexController extends Controller
 
         $sliders = slider::orderBy('id', 'DESC')->get();
         $categories = Category::orderBy('id', 'DESC')->get();
+        $products_vije = Product::orderBy('id', 'DESC')->where("vije",1)->get();
 
 
-        return view('front.index.main', compact('webtitle','sliders','categories'));
+        return view('front.index.main', compact('webtitle','sliders','categories','products_vije'));
     }
 
 
