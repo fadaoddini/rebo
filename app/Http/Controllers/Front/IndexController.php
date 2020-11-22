@@ -33,7 +33,7 @@ class IndexController extends Controller
 
 
 
-        return view('front.index.index', compact('webtitle'));
+        return view('front.index.main', compact('webtitle'));
     }
 
 
