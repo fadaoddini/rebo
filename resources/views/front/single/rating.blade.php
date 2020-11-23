@@ -2,14 +2,17 @@
     <div class="container d-flex align-items-center justify-content-between">
         <div class="ratings">
 
-
-            <i class="lni lni-star-filled"></i>
-            <i class="lni lni-star-filled"></i>
+            @for($i=0;$i<$averagecoment-1;$i++)
             <i class="lni lni-star-filled"></i>
 
-            <span class="pl-1">3 ستاره</span></div>
-        <div class="total-result-of-ratings"><span>5.0 </span><span>
-                خیلی خوب
+            @endfor
+            <span class="pl-1">
+
+                {{$averagecoment}}
+
+                ستاره</span></div>
+        <div class="total-result-of-ratings"><span>{{$averagecoment}}</span><span>
+
 
             </span></div>
     </div>

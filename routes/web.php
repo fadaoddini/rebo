@@ -25,6 +25,27 @@ Route::post('/updatepicprofile/{user}', 'App\Http\Controllers\Front\UserControll
 
 Route::get('/single/{slug}', 'App\Http\Controllers\Front\SingleController@show')->name('single');
 
+
+
+/*Comments*/
+Route::post('/addcomment/{product}', 'App\Http\Controllers\Front\CommentController@store')->name('comment.store');
+
+
+
+
+/*comments*/
+Route::prefix('admin/comments')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\CommentController@index')->name('admin.comment');
+    Route::get('/edit/{comment}', 'App\Http\Controllers\admin\CommentController@edit')->name('admin.comment.edit');
+    Route::post('/update/{comment}', 'App\Http\Controllers\admin\CommentController@update')->name('admin.comment.update');
+    Route::get('/delete/{comment}', 'App\Http\Controllers\admin\CommentController@destroy')->name('admin.comment.delete');
+    Route::get('/statuschange/{comment}', 'App\Http\Controllers\admin\CommentController@updatechangecomment')->name('statuschangecomment');
+});
+
+
+
+
 /*PanelAdmin*/
 Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo')->middleware('checkrole');
 

@@ -1,6 +1,6 @@
 @extends('front.index')
 @section('content')
-
+    @include('back.message')
         <div class="product-slides owl-carousel">
 
             <div class="single-product-slide" style="background-image: url('images/product/thumb/{{$product_single->image}}')"></div>

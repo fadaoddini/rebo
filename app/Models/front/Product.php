@@ -2,6 +2,7 @@
 
 namespace App\Models\admin;
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +37,10 @@ class Product extends Model
 
 
         return $this->belongsTo(User::class);
+    }
+    public function comments(){
+
+        return$this->hasMany(Comment::class);
     }
 
 

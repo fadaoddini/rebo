@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Front;
 use App\Models\admin\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SingleController extends Controller
 {
+    public $websitename = "ربو";
+
     /**
      * Display a listing of the resource.
      *
@@ -46,16 +49,24 @@ class SingleController extends Controller
      */
     public function show($slug)
     {
-        $webtitle = "صفحه اصلی";
+        $webtitle = $this->websitename;
+        $product_single=DB::table('products')->where('slug',$slug )->first();
+        $comments=DB::table('comments')->where('product_id',$product_single->id )->where('status','=','1' )->get();
+
+
+        $averagecoment=DB::table('comments')->where('product_id',$product_single->id )->where('status','=','1' )->avg('rating');
+
+        $averagecoment=round($averagecoment,1); //output: 2.5
+
+
+        $oldproduct=DB::table('products')->where('slug','<>',$slug )->Orderby('id','DESC')->paginate(5);
+        $writter=DB::table('users')->select('family')->where('id',$product_single->user_id )->first();
+
+        $writter=$writter->family;
 
 
 
-
-        $product_single = Product::orderBy('id', 'DESC')->where("slug",$slug)->first();
-
-
-
-        return view('front.single.main', compact('webtitle','product_single'));
+        return view('front.single.main', compact('webtitle', 'product_single','writter','oldproduct','comments','averagecoment'));
     }
 
     /**

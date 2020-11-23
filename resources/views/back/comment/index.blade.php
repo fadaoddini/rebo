@@ -32,7 +32,8 @@
 
                         <th style="min-width: 200px">خلاصه نظر</th>
                         <th style="min-width: 100px">نویسنده</th>
-                        <th style="min-width: 50px">مربوط به مطلب</th>
+                        <th style="min-width: 50px">مربوط به محصول</th>
+                        <th style="min-width: 50px">رتبه به محصول</th>
                         <th style="min-width: 50px">وضعیت</th>
                         <th class="pr-0 text-center" style="min-width: 150px">عملیات</th>
                     </tr>
@@ -100,7 +101,15 @@
 
                             <td class="pl-0">
                                 <p class="text-dark-75   text-hover-primary   ">
-                                    {{$comment->blog_id}}
+                                    {{$comment->product_id}}
+
+                                </p>
+                            </td>
+
+
+                            <td class="pl-0">
+                                <p class="text-dark-75   text-hover-primary   ">
+                                    {{$comment->rating}}
 
                                 </p>
                             </td>
