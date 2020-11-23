@@ -7,7 +7,12 @@
     <div class="top-products-area py-3">
         <div class="container">
             <div class="section-heading d-flex align-items-center justify-content-between">
-                <h6 class="ml-1">همه محصولات</h6>
+
+                <h6 class="ml-1">
+                    <a href="{{route('index')}}">
+                        صفحه نخست /
+                    </a>
+                    {{$cat->name}}</h6>
                 <!-- Layout Options-->
                 <div class="layout-options"><a class="active" href="{{route('grid',$cat->slug)}}"><i class="lni lni-grid-alt"></i></a><a href="{{route('list',$cat->slug)}}"><i class="lni lni-radio-button"></i></a></div>
             </div>
@@ -45,7 +50,7 @@
                                     <i class="lni lni-star-filled"></i>
                                     {{$item->ratee}}
                                 </div>
-                                <a class="btn btn-success btn-sm add2cart-notify" href="#">
+                                <a onclick="addtoo({{$item->id}})" class="btn btn-success btn-sm add2cart-notify">
                                     <i class="mr-1 lni lni-cart"></i>
 
                                     خرید
@@ -68,3 +73,6 @@
 
 
 @endsection
+
+
+

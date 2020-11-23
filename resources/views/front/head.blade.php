@@ -23,3 +23,10 @@
     <!-- Web App Manifest-->
     <link rel="manifest" href="{{url('front/manifest.json')}}">
 </head>
+
+@php
+    if (Cookie::get('basket')){
+    }else{
+      Cookie::queue('basket', time(),3000);
+    }
+@endphp

@@ -123,3 +123,30 @@ Route::prefix('admin/adver')->middleware('checkrole')->group(function () {
 
 
 
+
+
+
+/*AddToBasket*/
+Route::get('ajax/request', 'App\Http\Controllers\Front\IndexController@addtoo')->name('addtoo');
+Route::get('ajax/addcart', 'App\Http\Controllers\Front\ProductController@addtoosingle')->name('addtoosingle');
+
+
+
+/*Order*/
+Route::prefix('admin/orders')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\OrderController@index')->name('admin.order');
+    Route::get('/ordernot', 'App\Http\Controllers\admin\OrderController@indexnot')->name('admin.order.not');
+    Route::get('/orderok', 'App\Http\Controllers\admin\OrderController@indexok')->name('admin.order.ok');
+    Route::get('/create', 'App\Http\Controllers\admin\OrderController@create')->name('admin.order.create');
+    Route::post('/store', 'App\Http\Controllers\admin\OrderController@store')->name('admin.order.store');
+    Route::get('/edit/{order}', 'App\Http\Controllers\admin\OrderController@edit')->name('admin.order.edit');
+    Route::post('/update/{order}', 'App\Http\Controllers\admin\OrderController@update')->name('admin.order.update');
+    Route::get('/delete/{order}', 'App\Http\Controllers\admin\OrderController@destroy')->name('admin.order.delete');
+    Route::get('/statuschange/{order}', 'App\Http\Controllers\admin\OrderController@updatechangeorder')->name('statuschangeorder');
+});
+
+
+
+
+

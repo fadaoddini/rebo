@@ -31,6 +31,7 @@
 <script src="{{url('front/js/default/no-internet.js')}}"></script>
 <script src="{{url('front/js/default/active.js')}}"></script>
 <script src="{{url('front/js/pwa.js')}}"></script>
+<script src="{{url('front/js/fadaoddini.js')}}"></script>
 
 </body>
 </html>

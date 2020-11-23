@@ -8,7 +8,11 @@
     <div class="top-products-area py-3">
         <div class="container">
             <div class="section-heading d-flex align-items-center justify-content-between">
-                <h6 class="ml-1">همه محصولات</h6>
+                <h6 class="ml-1">
+                    <a href="{{route('index')}}">
+                        صفحه نخست /
+                    </a>
+                    {{$cat->name}}</h6>
                 <!-- Layout Options-->
                 <div class="layout-options"><a class="active" href="{{route('grid',$cat->slug)}}"><i class="lni lni-grid-alt"></i></a><a href="{{route('list',$cat->slug)}}"><i class="lni lni-radio-button"></i></a></div>
             </div>
@@ -37,13 +41,13 @@
                                 <span class="real-price"> {{$item->price}} تومان</span></p>
                             <div class="product-rating">
 
-                                @for($i=0;$i<($item->ratee)-1;$i++)
+                                @for($i=0;$i<($item->ratee);$i++)
                                     <i class="lni lni-star-filled"></i>
 
                                 @endfor
 
                             </div>
-                            <a class="btn btn-success btn-sm add2cart-notify" href="#">
+                            <a onclick="addtoo({{$item->id}})" class="btn btn-success btn-sm add2cart-notify" >
                                 <i class="lni lni-plus"></i>
                             </a>
                         </div>

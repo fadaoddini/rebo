@@ -198,17 +198,16 @@
 
 
 
-
                 {{--order--}}
                 <li class="menu-item   menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
 
                     <a
-                            href="javascript:;" class="menu-link menu-toggle">
+                        href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon"><!--begin::Svg Icon | path:assets/media/svg/icons/layout/layout-4-blocks.svg-->
                             <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"/>
         <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"/>
@@ -226,7 +225,7 @@
 
                             <li class="menu-item  menu-item-submenu" aria-haspopup="true"
                                 data-menu-toggle="hover">
-                                <a href="#" class="menu-link menu-toggle">
+                                <a href="{{route('admin.order')}}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line"><span></span></i>
                                     <span class="menu-text">مدیریت سفارشات</span>
 
@@ -235,7 +234,7 @@
                             </li>
                             <li class="menu-item  menu-item-submenu" aria-haspopup="true"
                                 data-menu-toggle="hover">
-                                <a href="#" class="menu-link menu-toggle">
+                                <a href="{{route('admin.order.ok')}}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line"><span></span></i>
                                     <span class="menu-text">سفارشات کامل شده</span>
 
@@ -244,7 +243,7 @@
                             </li>
                             <li class="menu-item  menu-item-submenu" aria-haspopup="true"
                                 data-menu-toggle="hover">
-                                <a href="#" class="menu-link menu-toggle">
+                                <a href="{{route('admin.order.not')}}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line"><span></span></i>
                                     <span class="menu-text">سفارشات ناقص</span>
 
@@ -256,7 +255,6 @@
                         </ul>
                     </div>
                 </li>
-
 
 
 
