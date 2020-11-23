@@ -10,12 +10,12 @@
 
 
 
-{{--    @include('front.index.mostsale')--}}
+    @include('front.index.mostsale')
 
 
 
-
-   {{-- @include('front.index.thebest')
+{{--
+    @include('front.index.thebest')
     @include('front.index.ads2')
     @include('front.index.barjeste')
     @include('front.index.nightmode')--}}

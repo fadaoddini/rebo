@@ -83,5 +83,18 @@ Route::prefix('admin/products')->middleware('checkrole')->group(function () {
 
 
 
+/*Adertising*/
+Route::prefix('admin/adver')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\AdverController@index')->name('admin.adver');
+    Route::get('/create', 'App\Http\Controllers\admin\AdverController@create')->name('admin.adver.create');
+    Route::post('/store', 'App\Http\Controllers\admin\AdverController@store')->name('admin.adver.store');
+    Route::get('/edit/{adver}', 'App\Http\Controllers\admin\AdverController@edit')->name('admin.adver.edit');
+    Route::post('/update/{adver}', 'App\Http\Controllers\admin\AdverController@update')->name('admin.adver.update');
+    Route::get('/delete/{adver}', 'App\Http\Controllers\admin\AdverController@destroy')->name('admin.adver.delete');
+    Route::get('/statuschange/{adver}', 'App\Http\Controllers\admin\AdverController@updatechangeadver')->name('statuschangeadver');
+
+});
+
 
 

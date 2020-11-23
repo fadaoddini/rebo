@@ -17,6 +17,8 @@
     <link href="{{url('/admin/css/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{url('/admin/css/plugins/custom/prismjs/prismjs.bundle.rtl.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{url('/admin/css/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css"/>
+{{--
     <script src="https://cdn.tiny.cloud/1/yse4nevtylpeeha4ngn07mpn7afbbz2u4otvtd76bt8fc64s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+--}}
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico"/>
 </head>

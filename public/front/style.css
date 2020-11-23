@@ -31,7 +31,9 @@
 'Roboto', sans-serif;
 ----------------------------------------- */
 /* Import Fonts & All CSS Files */
+/*
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap");
+*/
 @import url(css/bootstrap.min.css);
 @import url(css/animate.css);
 @import url(css/owl.carousel.min.css);
@@ -1321,7 +1323,7 @@ li.suha-dropdown-menu {
     font-weight: 700;
     color: #100DD1;
     margin-bottom: 0;
-    direction: rtl; 
+    direction: rtl;
   }
   .flash-sale-card .real-price {
     display: inline-block;
