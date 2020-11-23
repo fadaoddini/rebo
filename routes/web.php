@@ -23,6 +23,8 @@ Route::post('/updateprofile/{user}', 'App\Http\Controllers\Front\UserController@
 Route::post('/updatepicprofile/{user}', 'App\Http\Controllers\Front\UserController@updatepicprofile')->name('updatepicprofile')->middleware('auth');
 
 
+Route::get('/single/{slug}', 'App\Http\Controllers\Front\SingleController@show')->name('single');
+
 /*PanelAdmin*/
 Route::get('/rebo', 'App\Http\Controllers\admin\AdminController@index')->name('rebo')->middleware('checkrole');
 

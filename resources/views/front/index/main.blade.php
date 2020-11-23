@@ -4,13 +4,14 @@
     @include('front.alertpwa')
     @include('front.index.topslider')
     @include('front.index.category')
-    @include('front.index.vije')
     @include('front.index.ads1')
+    @include('front.index.vije')
 
 
 
+{{--
 
-    @include('front.index.mostsale')
+    @include('front.index.mostsale')--}}
 
 
 

@@ -1,5 +1,5 @@
 
-<div class="flash-sale-wrapper">
+<div class="flash-sale-wrapper mt-4">
     <div class="container">
         <div class="section-heading d-flex align-items-center justify-content-between">
             <h6 class="ml-1">ویژه</h6><a class="btn btn-primary btn-sm" href="">مشاهده همه</a>
@@ -13,7 +13,7 @@
 @foreach($products_vije as $vije)
 
     <div class="card flash-sale-card">
-        <div class="card-body"><a href="{{$vije->slug}}">
+        <div class="card-body"><a href="{{route('single',$vije->slug)}}">
 
                 <img src="{{url('images/product/thumb/'.$vije->image)}}" alt="{{$vije->slug}}" >
 
@@ -34,3 +34,5 @@
 </div>
 </div>
 </div>
+
+<br>

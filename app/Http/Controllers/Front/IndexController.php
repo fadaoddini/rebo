@@ -33,7 +33,7 @@ class IndexController extends Controller
         $webtitle = "صفحه اصلی";
 
         $sliders = slider::orderBy('id', 'DESC')->get();
-        $categories = Category::orderBy('id', 'DESC')->get();
+        $categories = Category::orderBy('id', 'ASC')->get();
         $products_vije = Product::orderBy('id', 'DESC')->where("vije",1)->get();
         $adver1 = Adver::orderBy('id', 'DESC')->where("place",1)->first();
         $adver2 = Adver::orderBy('id', 'DESC')->where("place",2)->first();

@@ -3,7 +3,7 @@
         background: linear-gradient(to right, {{$adver1->bgcolor}}, {{$adver1->bgcolor2}});
     }
 </style>
-<div class="cta-area mt-4  ">
+<div class="cta-area   ">
     <div class="container">
 
 

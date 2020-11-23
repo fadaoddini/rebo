@@ -76,7 +76,7 @@
 
                             <div class="col-12  form-group">
                                 <label>
-                                    ابعاد استاندارد 36 در 36 پیکسل می باشد
+                                    ابعاد استاندارد 100 در 100 پیکسل می باشد
                                 </label>
                                 <input type="file" name="image"  class="dropzone dropzone-default dz-clickable" id="kt_dropzone_1">
 
