@@ -12,7 +12,7 @@
                 <!-- Single Catagory Card-->
                 <div class="col-4">
                     <div class="card catagory-card">
-                        <div class="card-body"><a href="{{$cat->slug}}">
+                        <div class="card-body"><a href="{{route('grid',$cat->slug)}}">
 
                                 <img src="{{url('images/category/thumb/'.$cat->image)}}" alt="{{$cat->slug}}" >
 

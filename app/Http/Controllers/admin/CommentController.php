@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 
@@ -121,7 +122,19 @@ class CommentController extends Controller
         }else{
             $comment->status=1;
         }
+
+
         $comment->save();
+
+        $averagecoment=DB::table('comments')->where('product_id',$comment->product_id )->where('status','=','1' )->avg('rating');
+
+        $averagecoment=round($averagecoment,1); //output: 2.5
+
+
+        $affected = DB::table('products')
+            ->where('id', $comment->product_id)
+            ->update(['ratee' => $averagecoment]);
+
         $msg = "تغییرات با موفقیت انجام شد";
         return redirect(route('admin.comment'))->with('warning', $msg);
 
