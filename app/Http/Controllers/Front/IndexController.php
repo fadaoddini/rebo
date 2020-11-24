@@ -11,6 +11,7 @@ use App\Models\admin\Product;
 use App\Models\Comment;
 use App\Models\Slider;
 use App\Models\admin\Category;
+use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -79,18 +80,145 @@ class IndexController extends Controller
 
     }
 
+    public function getCookie2(Request $request) {
+        $value = $request->cookie('basket');
+        return $value;
+    }
 
 
-    public function addtoo(Request $request)
+
+    public function addchange(Product $product,Request $request){
+
+        $product_id=$product->id;
+        $newtedad= $request->addchange;
+        $cookie= $this->getCookie2($request);
+
+
+        if ($newtedad<1){
+
+            $msg = "نمی توانید سفارش خود را کمتر از یک در نظر بگیرید!";
+            return redirect(route('cart'))->with('warning', $msg);
+        }else{
+
+
+        DB::update('update basket set tedad=? where cookie = ? and product_id = ?', [$newtedad,$cookie,$product_id]);
+        $numcart = DB::table('basket')->where('cookie', $cookie)->count();
+        $basket = DB::table('basket')
+            ->leftJoin('products', 'basket.product_id', '=', 'products.id')
+            ->where('cookie', $cookie)
+            ->get();
+        $totalprice = 0;
+        $totaltakhfif = 0;
+        foreach ($basket as $row) {
+            $price = $row->price;
+            $tedad = $row->tedad;
+            $price_first = $price * $tedad;
+            $takhfif = $row->takhfif;
+            $darsad_takhfif = $takhfif / 100;
+            $price_takhfif = $price_first * $darsad_takhfif;
+            $price_total = $price_first - $price_takhfif;
+            $totalprice = $totalprice + $price_total;
+            $totalprice = floor($totalprice);
+            $totaltakhfif = $totaltakhfif + $price_takhfif;
+            $totaltakhfif = floor($totaltakhfif);
+        }
+        return view('front.cart.main', compact( 'basket','totalprice','totaltakhfif'));
+
+        }
+
+
+
+    }
+
+    public function adresschange(User $user,Request $request){
+        $user_id=$user->id;
+        $cookie= $this->getCookie2($request);
+        $ship= $request->ship;
+        $adress= $request->adress;
+        $shiping= DB::table('mahdodes')->get();
+
+        if ($adress==null){
+
+            $msg = "نمی توانید بدون نوشتن آدرس و نیز انتخاب محدوده سفارشی را ثبت کنید!";
+            return redirect(route('shiping'))->with('warning', $msg);
+        }else{
+
+
+
+            $check_exist_adress = DB::table('user_adress')->where('user_id', $user_id)->exists();
+
+
+            if ($check_exist_adress) {
+
+
+
+
+                DB::update('update user_adress set adress=?,mahdode=? where user_id = ? ', [$adress,$ship,$user_id]);
+
+            } else {
+                DB::insert('insert into user_adress (user_id,adress,mahdode,city) values (?,?,?,?)', [$user_id,$adress,$ship,'city']);
+
+            }
+
+
+            $bazbini= DB::table('user_adress')->where('user_id',$user_id)->first();
+
+
+            $mahdodeyeman=$bazbini->mahdode;
+            $mahdode= DB::table('mahdodes')->where('id',$mahdodeyeman)->first();
+
+
+
+            $numcart = DB::table('basket')->where('cookie', $cookie)->count();
+            $basket = DB::table('basket')
+                ->leftJoin('products', 'basket.product_id', '=', 'products.id')
+                ->where('cookie', $cookie)
+                ->get();
+            $totalprice = 0;
+            $totaltakhfif = 0;
+            foreach ($basket as $row) {
+                $price = $row->price;
+                $tedad = $row->tedad;
+                $price_first = $price * $tedad;
+                $takhfif = $row->takhfif;
+                $darsad_takhfif = $takhfif / 100;
+                $price_takhfif = $price_first * $darsad_takhfif;
+                $price_total = $price_first - $price_takhfif;
+                $totalprice = $totalprice + $price_total;
+                $totalprice = floor($totalprice);
+                $totaltakhfif = $totaltakhfif + $price_takhfif;
+                $totaltakhfif = floor($totaltakhfif);
+            }
+
+
+            return view('front.bazbini.main', compact( 'basket','totalprice','totaltakhfif','shiping','bazbini','mahdode'));
+
+        }
+
+
+    }
+
+
+
+
+    public function addtoo(Product $product,Request $request)
 
     {
 
-        $product_id = $request->id;
-        $userid = 0;
 
 
 
-        $cookie= self::getcookie($request);
+
+
+        $product_id = $product->id;
+
+
+
+
+
+        $cookie= $this->getCookie2($request);
+
+
 
 
 
@@ -104,11 +232,11 @@ class IndexController extends Controller
 
 
 
-            //    DB::update('update basket set tedad=tedad+1 where cookie = ? and article_id = ?', [$cookie,$article_id]);
+                DB::update('update basket set tedad=tedad+1 where cookie = ? and product_id = ?', [$cookie,$product_id]);
 
         } else {
 
-            DB::insert('insert into basket (product_id,cookie,tedad,user_id) values (?,?,?,?)', [$product_id,$cookie,1,$userid]);
+            DB::insert('insert into basket (product_id,cookie,tedad) values (?,?,?)', [$product_id,$cookie,1]);
 
 
         }
@@ -145,43 +273,140 @@ class IndexController extends Controller
         }
 
 
-        return response()->json(['numcart' => $numcart, 'result' => $result, 'price_total_all' => $price_total_all, 'price_takhfif_all' => $price_takhfif_all]);
+      // return response()->json(['numcart' => $numcart, 'result' => $result, 'price_total_all' => $price_total_all, 'price_takhfif_all' => $price_takhfif_all]);
 
-        /* return response()->json(['numcart' => $ali]);*/
+      return back();
 
 
     }
 
 
 
-    public function cart()
+    public function cart(Request $request)
     {
 
 
         $webtitle = "سبد خرید";
-
+        $cookie= $this->getCookie2($request);
         $totalprice=0;
         $totaltakhfif=0;
+        $numcart = DB::table('basket')->where('cookie', $cookie)->count();
         $basket = DB::table('basket')
             ->leftJoin('products', 'basket.product_id', '=', 'products.id')
+            ->where('cookie', $cookie)
             ->get();
-
-        foreach ($basket as $row){
-            $price=$row->price;
-            $takhfif=$row->takhfif;
-
-            $totaltakhfif+= (($price*$takhfif)/100);
-
-
-
-            $totalprice+=$price;
-
+        $totalprice = 0;
+        $totaltakhfif = 0;
+        foreach ($basket as $row) {
+            $price = $row->price;
+            $tedad = $row->tedad;
+            $price_first = $price * $tedad;
+            $takhfif = $row->takhfif;
+            $darsad_takhfif = $takhfif / 100;
+            $price_takhfif = $price_first * $darsad_takhfif;
+            $price_total = $price_first - $price_takhfif;
+            $totalprice = $totalprice + $price_total;
+            $totalprice = floor($totalprice);
+            $totaltakhfif = $totaltakhfif + $price_takhfif;
+            $totaltakhfif = floor($totaltakhfif);
         }
 
 
 
-        return view('front.web.cart.main', compact('webtitle', 'basket','totalprice','totaltakhfif'));
+        return view('front.cart.main', compact('webtitle', 'basket','totalprice','totaltakhfif'));
     }
+
+
+    public function shiping(Request $request)
+    {
+
+
+        $webtitle = "انتخاب آدرس";
+
+
+        $shiping= DB::table('mahdodes')->get();
+
+
+        $cookie= $this->getCookie2($request);
+        $totalprice=0;
+        $totaltakhfif=0;
+        $numcart = DB::table('basket')->where('cookie', $cookie)->count();
+        $basket = DB::table('basket')
+            ->leftJoin('products', 'basket.product_id', '=', 'products.id')
+            ->where('cookie', $cookie)
+            ->get();
+        $totalprice = 0;
+        $totaltakhfif = 0;
+        foreach ($basket as $row) {
+            $price = $row->price;
+            $tedad = $row->tedad;
+            $price_first = $price * $tedad;
+            $takhfif = $row->takhfif;
+            $darsad_takhfif = $takhfif / 100;
+            $price_takhfif = $price_first * $darsad_takhfif;
+            $price_total = $price_first - $price_takhfif;
+            $totalprice = $totalprice + $price_total;
+            $totalprice = floor($totalprice);
+            $totaltakhfif = $totaltakhfif + $price_takhfif;
+            $totaltakhfif = floor($totaltakhfif);
+        }
+
+
+
+        return view('front.shiping.main', compact('webtitle', 'basket','totalprice','totaltakhfif','shiping'));
+    }
+
+
+
+
+    public function bazbini(Request $request)
+    {
+
+
+        $webtitle = "بازبینی";
+
+        $user_id=Auth::user()->id;
+
+        $bazbini= DB::table('user_adress')->where('user_id',$user_id)->first();
+
+
+        $mahdodeyeman=$bazbini->mahdode;
+        $mahdode= DB::table('mahdodes')->where('id',$mahdodeyeman)->first();
+
+
+        $cookie= $this->getCookie2($request);
+        $totalprice=0;
+        $totaltakhfif=0;
+        $numcart = DB::table('basket')->where('cookie', $cookie)->count();
+        $basket = DB::table('basket')
+            ->leftJoin('products', 'basket.product_id', '=', 'products.id')
+            ->where('cookie', $cookie)
+            ->get();
+        $totalprice = 0;
+        $totaltakhfif = 0;
+        foreach ($basket as $row) {
+            $price = $row->price;
+            $tedad = $row->tedad;
+            $price_first = $price * $tedad;
+            $takhfif = $row->takhfif;
+            $darsad_takhfif = $takhfif / 100;
+            $price_takhfif = $price_first * $darsad_takhfif;
+            $price_total = $price_first - $price_takhfif;
+            $totalprice = $totalprice + $price_total;
+            $totalprice = floor($totalprice);
+            $totaltakhfif = $totaltakhfif + $price_takhfif;
+            $totaltakhfif = floor($totaltakhfif);
+        }
+
+
+
+        return view('front.bazbini.main', compact('webtitle', 'basket','totalprice','totaltakhfif','bazbini','mahdode'));
+    }
+
+
+
+
+
 
     public function deletecart($id)
     {

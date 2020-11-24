@@ -8,7 +8,7 @@
             <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
                 <li class="active"><a href="{{route('index')}}"><i class="lni lni-home"></i>خانه</a></li>
                 <li><a href="{{route('index')}}"><i class="lni lni-life-ring"></i>حمایت کردن</a></li>
-                <li><a href="{{route('index')}}"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
+                <li><a href="{{route('cart')}}"><i class="lni lni-shopping-basket"></i>سبد خرید</a></li>
                 <li><a href="{{route('index')}}"><i class="lni lni-heart"></i>قوانین</a></li>
                 <li><a href="{{route('index')}}"><i class="lni lni-cog"></i>تنظیمات</a></li>
             </ul>

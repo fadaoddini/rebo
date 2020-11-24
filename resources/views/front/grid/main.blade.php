@@ -47,9 +47,17 @@
                                 @endfor
 
                             </div>
-                            <a onclick="addtoo({{$item->id}})" class="btn btn-success btn-sm add2cart-notify" >
+
+
+
+
+
+
+                                <button class="btn btn-success btn-sm " type="submit"><i class="lni lni-plus"></i></button>
+                                <a href="{{route('addtoo',$item->id)}}" class="btn btn-success btn-sm add2cart-notify " >
                                 <i class="lni lni-plus"></i>
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -64,3 +72,7 @@
 
 
 @endsection
+
+
+
+

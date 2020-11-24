@@ -16,6 +16,8 @@ class Controller extends BaseController
 
         $value = $request->cookie('basket');
 
+
+
         return $value;
 
     }

@@ -50,7 +50,7 @@
                                     <i class="lni lni-star-filled"></i>
                                     {{$item->ratee}}
                                 </div>
-                                <a onclick="addtoo({{$item->id}})" class="btn btn-success btn-sm add2cart-notify">
+                                <a href="{{route('addtoo',$item->id)}}"  class="btn btn-success btn-sm add2cart-notify">
                                     <i class="mr-1 lni lni-cart"></i>
 
                                     خرید

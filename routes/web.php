@@ -25,6 +25,16 @@ Route::post('/updateprofile/{user}', 'App\Http\Controllers\Front\UserController@
 Route::post('/updatepicprofile/{user}', 'App\Http\Controllers\Front\UserController@updatepicprofile')->name('updatepicprofile')->middleware('auth');
 
 
+
+
+/*AddToBasket*/
+
+Route::get('/addtobasket/{product}', 'App\Http\Controllers\Front\IndexController@addtoo')->name('addtoo');
+Route::post('/addchange/{product}', 'App\Http\Controllers\Front\IndexController@addchange')->name('addchange');
+Route::post('/adresschange/{user}', 'App\Http\Controllers\Front\IndexController@adresschange')->name('adresschange');
+
+
+
 Route::get('/single/{slug}', 'App\Http\Controllers\Front\SingleController@show')->name('single');
 
 
@@ -107,6 +117,19 @@ Route::prefix('admin/products')->middleware('checkrole')->group(function () {
 });
 
 
+/*Mahdode*/
+Route::prefix('admin/mahdodes')->middleware('checkrole')->group(function () {
+
+    Route::get('/', 'App\Http\Controllers\admin\MahdodeController@index')->name('admin.mahdode');
+    Route::get('/create', 'App\Http\Controllers\admin\MahdodeController@create')->name('admin.mahdode.create');
+    Route::post('/store', 'App\Http\Controllers\admin\MahdodeController@store')->name('admin.mahdode.store');
+    Route::get('/edit/{mahdode}', 'App\Http\Controllers\admin\MahdodeController@edit')->name('admin.mahdode.edit');
+    Route::post('/update/{mahdode}', 'App\Http\Controllers\admin\MahdodeController@update')->name('admin.mahdode.update');
+    Route::get('/delete/{mahdode}', 'App\Http\Controllers\admin\MahdodeController@destroy')->name('admin.mahdode.delete');
+    Route::get('/statuschange/{mahdode}', 'App\Http\Controllers\admin\MahdodeController@updatechangemahdode')->name('statuschangemahdode');
+});
+
+
 
 /*Adertising*/
 Route::prefix('admin/adver')->middleware('checkrole')->group(function () {
@@ -125,10 +148,16 @@ Route::prefix('admin/adver')->middleware('checkrole')->group(function () {
 
 
 
+/*Cart*/
+Route::get('/cart', 'App\Http\Controllers\Front\IndexController@cart')->name('cart');
+Route::get('/cartdelete/{id}', 'App\Http\Controllers\Front\IndexController@deletecart')->name('deletecart');
+Route::get('/payment/{price}', 'App\Http\Controllers\Front\IndexController@pardakht')->name('pardakht');
+Route::get('/verify', 'App\Http\Controllers\Front\IndexController@verify')->name('verify');
+Route::get('/shiping', 'App\Http\Controllers\Front\IndexController@shiping')->name('shiping');
+Route::get('/bazbini', 'App\Http\Controllers\Front\IndexController@bazbini')->name('bazbini');
+Route::get('/getcookie', 'App\Http\Controllers\Front\IndexController@getcookie')->name('getcookie');
+Route::get('/setcookie2', 'App\Http\Controllers\Front\IndexController@setcookie2')->name('setcookie2');
 
-/*AddToBasket*/
-Route::get('ajax/request', 'App\Http\Controllers\Front\IndexController@addtoo')->name('addtoo');
-Route::get('ajax/addcart', 'App\Http\Controllers\Front\ProductController@addtoosingle')->name('addtoosingle');
 
 
 
