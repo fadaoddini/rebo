@@ -26,20 +26,40 @@
 
                             </p>
                             <p class="alert alert-success">
-                                مبلغ پرداختی شما با احتساب هزینه ارسال (
+                                مبلغ پرداختی شما  :
 
-                                {{$mahdode->price}}
-                                تومان
-                                ) :
-                                <span>
-     {{$totalprice}}
-                                    تومان
-</span>
 
-                                می باشد
+
+
+                                <span >
+                                    @php
+                                       $toti= $mahdode->price+$totalprice;
+                                    @endphp
+                                    {{number_format($toti)}}
+                                      تومان
+                                </span>
+                                <br>
+                                <span class="badge badge-success p-1 text-white">
+
+
+                                <span style="font-size: 10px; ">
+   {{number_format($totalprice)}} (جمع سبد)
+                                +
+                                </span>
+
+                                <span style="font-size: 10px; ">
+
+
+   {{number_format($mahdode->price)}}  (هزینه ارسال)
+
+                                </span>
+    </span>
+
+
+
 
                             </p>
-                        </div><a class="btn btn-warning btn-lg w-100" href="payment-success.html">اکنون سفارش دهید</a>
+                        </div><a class="btn btn-warning btn-lg w-100" href="{{Route('pardakht',$toti)}}">پرداخت</a>
                     </div>
                 </div>
             </div>

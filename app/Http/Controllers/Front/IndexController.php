@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use PhpParser\Node\Stmt\DeclareDeclare;
 use Shetabit\Multipay\Invoice;
-use Shetabit\Payment\Facade\Payment;
+use Shetabit\Multipay\Payment;
 use SoapClient;
 
 class IndexController extends Controller
@@ -427,13 +427,22 @@ class IndexController extends Controller
     {
 
 
-
         $cookie= self::getcookie($request);
-        $payment=$request->price;
-        $payment=intval($payment);
+
+
+
+
+
+        $payment = new Payment();
+
+
+
+
+        $payment1=$request->price;
+        $payment1=intval($payment1);
 
         $timing=time();
-        $barcode=time().$payment;
+        $barcode=time().$payment1;
 
 
         /*$ali= gettype($payment);*/ // integer
@@ -453,24 +462,41 @@ class IndexController extends Controller
 
 
 
-        $invoice = new Invoice;
+         $invoice = new Invoice();
 
 // Set invoice amount.
-        $invoice->amount($payment);
+        $invoice->amount($payment1);
         $invoice->detail(['family' => $family]);
         $invoice->detail(['email' => $email]);
         $invoice->detail(['mobile' => $mobile]);
-
-
-
-
-        return Payment::purchase($invoice, function($driver, $transactionId)use ($timing, $basket, $payment, $user_id) {
+        return $payment->purchase($invoice, function($driver, $transactionId)use ( $basket, $payment1, $user_id) {
             // Store transactionId in database as we need it to verify payment in the future.
+
             $Authority=substr($transactionId,26);
-            DB::insert('insert into orders(user_id,amount,rah_pay,basket,vaziat,reserve,pardakht,timing) values (?,?,?,?,?,?,?,?)', [$user_id,$payment,1,$basket,0,$Authority,0,$timing]);
+
+            DB::insert('insert into orders(user_id,amount,rah_pay,basket,vaziat,reserve,pardakht) values (?,?,?,?,?,?,?)',
+                [$user_id,$payment1,1,$basket,0,$Authority,0]);
+
+
 
 
         })->pay()->render();
+
+       /* return $payment->purchase($invoice, function($driver, $transactionId) use ($timing, $basket, $payment, $user_id){
+            // Store transactionId in database as we need it to verify payment in the future.
+
+            $Authority=substr($transactionId,26);
+            dd($payment);
+            DB::insert('insert into orders(user_id,amount,rah_pay,basket,vaziat,reserve,pardakht,timing) values (?,?,?,?,?,?,?,?)',
+                [$user_id,$payment,1,$basket,0,$Authority,0,$timing]);
+
+
+        })->pay();*/
+
+
+
+
+
 
 
 

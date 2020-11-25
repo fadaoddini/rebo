@@ -110,6 +110,8 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/salibhdr/typhoon-iran-cities" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/shetabit/multipay" />
+      <path value="$PROJECT_DIR$/vendor/econea/nusoap" />
     </include_path>
   </component>
   <component name="PhpUnit">
