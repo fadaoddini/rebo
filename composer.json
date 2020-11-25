@@ -17,7 +17,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "salibhdr/typhoon-iran-cities": "^1.3",
-        "shetabit/multipay": "^1.1"
+        "shetabit/multipay": "^1.1",
+        "shetabit/payment": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
