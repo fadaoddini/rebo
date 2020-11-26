@@ -1,6 +1,7 @@
 @extends('front.index')
 @section('content')
     <!-- PWA Install Alert-->
+    @include('back.message')
     @include('front.alertpwa')
     @include('front.index.topslider')
     @include('front.index.category')
@@ -19,6 +20,6 @@
     @include('front.index.thebest')
     @include('front.index.ads2')
     @include('front.index.barjeste')
-    @include('front.index.nightmode')--}}
-
+    --}}
+    @include('front.index.nightmode')
 @endsection

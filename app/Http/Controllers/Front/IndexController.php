@@ -56,7 +56,18 @@ class IndexController extends Controller
             ->get();
 
 
-        return view('front.list.main', compact('webtitle',  'products','cat'));
+
+
+        if ($products->count()>1){
+            return view('front.list.main', compact('webtitle',  'products','cat'));
+        }else{
+
+            $msg = "در این دسته محصولی قرار نگرفته است!";
+            return redirect(route('index'))->with('warning', $msg);
+        }
+
+
+
     }
 
     public function gridproduct($slug)
@@ -76,7 +87,14 @@ class IndexController extends Controller
 
 
 
-        return view('front.grid.main', compact('webtitle',  'products','cat'));
+        if ($products->count()>1){
+            return view('front.grid.main', compact('webtitle',  'products','cat'));
+        }else{
+
+            $msg = "در این دسته محصولی قرار نگرفته است!";
+            return redirect(route('index'))->with('warning', $msg);
+        }
+
 
     }
 
@@ -210,6 +228,7 @@ class IndexController extends Controller
 
 
 
+
         $product_id = $product->id;
 
 
@@ -217,6 +236,7 @@ class IndexController extends Controller
 
 
         $cookie= $this->getCookie2($request);
+
 
 
 

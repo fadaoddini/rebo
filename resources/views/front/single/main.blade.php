@@ -2,8 +2,12 @@
 @section('content')
     @include('back.message')
         <div class="product-slides owl-carousel">
-
-            <div class="single-product-slide" style="background-image: url('images/product/thumb/{{$product_single->image}}')"></div>
+     {{--       {{'public_html/images/product/'.$product_single->image}}
+            <img src="{{url('images/product/'.$product_single->image)}}">--}}
+            <img class="single-product-slide" src="{{url('images/product/'.$product_single->image)}}">
+            <img class="single-product-slide" src="{{url('images/product/'.$product_single->image)}}">
+            <img class="single-product-slide" src="{{url('images/product/'.$product_single->image)}}">
+            {{--<div class="single-product-slide" style="background-image: url('images/product/{{$product_single->image}}')"></div>--}}
           {{--  <div class="single-product-slide" style="background-image: url('images/product/thumb/{{$product_single->image}}')"></div>
 
             <div class="single-product-slide" style="background-image: url('images/product/thumb/{{$product_single->image}}')"></div>--}}
@@ -21,7 +25,7 @@
                                 تومان
                             </span></p>
                     </div>
-                    <div class="p-wishlist-share"><a href="wishlist-grid.html"><i class="lni lni-heart"></i></a></div>
+                    <div class="p-wishlist-share"><a href="#"><i class="lni lni-heart"></i></a></div>
                 </div>
                 @include('front.single.rating')
             </div>

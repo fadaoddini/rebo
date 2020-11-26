@@ -187,7 +187,7 @@ return [
 
             'mode' => 'normal', // can be normal, sandbox, zaringate
             'merchantId' => '4f432d28-77be-11ea-9dca-000c295eb8fc',
-            'callbackUrl' => 'http://localhost/verify',
+            'callbackUrl' => 'http://rebo.ir/verify',
             'description' => 'زرین پال ',
         ],
         'zibal' => [

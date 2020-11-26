@@ -61,7 +61,7 @@
         </div>
         <!-- Sidenav Nav-->
         <ul class="sidenav-nav pl-0">
-            <li><a href="login"><i class="lni lni-user"></i>ورود</a></li>
+            <li><a href="{{route('login')}}"><i class="lni lni-user"></i>ورود</a></li>
 
         </ul>
 
